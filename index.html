@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,59 +9,109 @@
     <style>
         html {
             max-width: 1080px;
-            height:auto;
+            height: auto;
             margin-left: auto;
             margin-right: auto;
             background-color: #111;
-            color:white;
+            color: white;
             font-family: helvetica;
-            font-size: 32px; 
+            font-size: 32px;
             text-decoration: none;
         }
+
         img {
             width: 100%;
-            height:auto;
+            height: auto;
             margin-left: auto;
             margin-right: auto;
         }
-        a {
-            text-decoration: none; 
-            color:white;
-            width:100%;
-            margin:auto;
+
+        a, button {
+            text-decoration: none;
+            color: white;
+            width: 100%;
+            margin: auto;
         }
-        a:visited { 
-            text-decoration: none; 
-            color:white; 
+
+        a:visited {
+            text-decoration: none;
+            color: white;
         }
-        a:hover { 
-            text-decoration: none; 
-            
-            color:white; 
+
+        a:hover {
+            text-decoration: none;
+            color: white;
         }
-        a:focus { 
-            text-decoration: none; 
-            color:white; 
+
+        a:focus {
+            text-decoration: none;
+            color: white;
         }
-        a:hover, a:active { 
-            text-decoration: none; 
-            color:white 
+
+        a:hover,
+        a:active {
+            text-decoration: none;
+            color: white
         }
+
         .music {
             margin: auto;
-            width: 70%;
-            outline:1px solid #333;
-            box-shadow: 0 0 0 2px #333 ;
+            width: 90%;
+            /* outline: 1px solid #333;
+            box-shadow: 0 0 0 2px #333; */
             padding: 10px;
         }
+
         .centerText {
             text-align: center;
         }
+
+        .accordion {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: 1px solid #555;
+            font-size: 32px;
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #444;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: #333;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            outline: 1px solid #555;
+        }
     </style>
 </head>
-<body>
+
+<body class="centerText">
     <img src="https://raw.githubusercontent.com/InferiorArtist/inferiorartist.github.io/main/Images/afs%20words%20logo2.png">
-    <div class="music centerText">
+    
+    <!-- <div class="music centerText">
         <a class="centerText">MUSIC</a>
     </div>
     <div class="music">
@@ -69,6 +120,40 @@
         <a href="/music/5._Ruck_March.mp3">5. Ruck March</a><br>
         <a href="/music/8. Poachers Entrance.mp3">8. Poachers Entrance</a><br>
         <a href="/music/12. The Beginning of the End.mp3">12. The Beginning of the End</a>
+    </div> -->
+
+
+    <!-- FOR FUTURE -->
+    <!-- <a href="https://afantasystory.com/"><button class="accordion">Home</button></a> -->
+
+
+    <button class="accordion">Music</button>
+    <div class="panel">
+        <div class="music">
+            <a href="/music\1. A Fantasy Story.mp3">1. A Fantasy Story</a><br>
+            <a href="/music/2._Tenebrous_Trio.mp3">2. Tenebrous Trio</a><br>
+            <a href="/music/5._Ruck_March.mp3">5. Ruck March</a><br>
+            <a href="/music/8. Poachers Entrance.mp3">8. Poachers Entrance</a><br>
+            <a href="/music/12. The Beginning of the End.mp3">12. The Beginning of the End</a>
+        </div>
     </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
